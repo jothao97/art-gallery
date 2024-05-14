@@ -1,23 +1,33 @@
 import logo from './logo.svg';
 import './App.css';
+import React, { useState } from 'react';
+
+/* Main Gallery page: displays all art pieces with each artwork's name and artist shown underneath to provide quick insight to collection*/
+
+/* Individual artwork pages: each artwork can be accessed through own dedicated page, providing more detail info about piece, allowing viewers to engage deeply with each artwork*/
+
 
 function App() {
+
+  const [artName, setArtName] = useState('');
+  const [artist, setArtist] = useState('');
+  const [artDetail, setArtDetail] = useState('')
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const newArt = {
+      artName: artName,
+      artist: artist,
+      artDetail: artDetail
+    };
+  }
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div >
+     
+    
     </div>
   );
 }
