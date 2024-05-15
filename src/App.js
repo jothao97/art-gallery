@@ -46,7 +46,11 @@ function App() {
   return (
     <div>
       
-      <h1>Featured Artworks</h1>
+      <h1>Welcome to the Art Gallery</h1>
+      
+
+
+      
       {/* Display the artworks */}
       <div className="artwork-container">
         {artList.map((art, index) => (
