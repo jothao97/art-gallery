@@ -45,55 +45,61 @@ function App() {
 
   return (
     <div>
-      <h1>Featured Artworks</h1>
-      {/* Form for adding new artwork */}
-      <form onSubmit={handleSubmit}>
-        {/* Input fields for artwork details */}
-        <label>
-          Art Name:
-          <input type="text" value={artName} onChange={(e) => setArtName(e.target.value)} />
-        </label>
-        <br />
-        <label>
-          Artist:
-          <input type="text" value={artist} onChange={(e) => setArtist(e.target.value)} />
-        </label>
-        <br />
-        <label>
-          Art Detail:
-          <input type="text" value={artDetail} onChange={(e) => setArtDetail(e.target.value)} />
-        </label>
-        <br />
-        {/* Input field for image upload */}
-        <label>
-          Upload Image:
-          <input type="file" onChange={handleFileChange} />
-        </label>
-        <br />
-        <button type="submit">Add Artwork</button>
-      </form>
       
+      <h1>Featured Artworks</h1>
       {/* Display the artworks */}
-      {artList.map((art, index) => (
-        <div key={index}>
-          {/* Clickable image to show or hide details */}
-          <img
-            src={URL.createObjectURL(art.imageFile)}
-            alt="Artwork"
-            style={{ maxWidth: '200px', cursor: 'pointer' }}
-            onClick={() => handleImageClick(index)}
-          />
-          {/* Display details only if the current image index matches the selected image index */}
-          {selectedImageIndex === index && (
-            <div>
-              <h2>Image Details</h2>
-              <p>Art Piece: {art.artName}</p>
-              <p>Artist: {art.artist}</p>
-              <p>Detail: {art.artDetail}</p>
-            </div>
-          )}
-        </div>
-      ))}
+      <div className="artwork-container">
+        {artList.map((art, index) => (
+          <div key={index} className="artwork-item">
+            {/* Clickable image to show or hide details */}
+            <img
+              src={URL.createObjectURL(art.imageFile)}
+              alt="Artwork"
+              onClick={() => handleImageClick(index)}
+            />
+            {/* Display details only if the current image index matches the selected image index */}
+            {selectedImageIndex === index && (
+              <div className="artwork-details">
+                <h2>Image Details</h2>
+                <p>Art Piece: {art.artName}</p>
+                <p>Artist: {art.artist}</p>
+                <p>Detail: {art.artDetail}</p>
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+      <div className="container">
+  
+        {/* Form for adding new artwork */}
+        <form className="form-container" onSubmit={handleSubmit}>
+          {/* Input fields for artwork details */}
+          <label>
+            Art Name:
+            <input type="text" value={artName} onChange={(e) => setArtName(e.target.value)} />
+          </label>
+          <br />
+          <label>
+            Artist:
+            <input type="text" value={artist} onChange={(e) => setArtist(e.target.value)} />
+          </label>
+          <br />
+          <label>
+            Art Detail:
+            <input type="text" value={artDetail} onChange={(e) => setArtDetail(e.target.value)} />
+          </label>
+          <br />
+          {/* Input field for image upload */}
+          <label>
+            Upload Image:
+            <input type="file" onChange={handleFileChange} />
+          </label>
+          <br />
+          <button type="submit">Add Artwork</button>
+        </form>
+      </div>
+      
+      
     </div>
   );
 }
