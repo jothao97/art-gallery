@@ -44,12 +44,34 @@ function App() {
   };
 
   return (
-    <div>
-      
-      <h1>Welcome to the Art Gallery</h1>
-      
-
-
+    <div className="container">
+      <h1>Featured Artworks</h1>
+      {/* Form for adding new artwork */}
+      <form className="form-container" onSubmit={handleSubmit}>
+        {/* Input fields for artwork details */}
+        <label>
+          Art Name:
+          <input type="text" value={artName} onChange={(e) => setArtName(e.target.value)} />
+        </label>
+        <br />
+        <label>
+          Artist:
+          <input type="text" value={artist} onChange={(e) => setArtist(e.target.value)} />
+        </label>
+        <br />
+        <label>
+          Art Detail:
+          <input type="text" value={artDetail} onChange={(e) => setArtDetail(e.target.value)} />
+        </label>
+        <br />
+        {/* Input field for image upload */}
+        <label>
+          Upload Image:
+          <input type="file" onChange={handleFileChange} />
+        </label>
+        <br />
+        <button type="submit">Add Artwork</button>
+      </form>
       
       {/* Display the artworks */}
       <div className="artwork-container">
@@ -73,37 +95,6 @@ function App() {
           </div>
         ))}
       </div>
-      <div className="container">
-  
-        {/* Form for adding new artwork */}
-        <form className="form-container" onSubmit={handleSubmit}>
-          {/* Input fields for artwork details */}
-          <label>
-            Art Name:
-            <input type="text" value={artName} onChange={(e) => setArtName(e.target.value)} />
-          </label>
-          <br />
-          <label>
-            Artist:
-            <input type="text" value={artist} onChange={(e) => setArtist(e.target.value)} />
-          </label>
-          <br />
-          <label>
-            Art Detail:
-            <input type="text" value={artDetail} onChange={(e) => setArtDetail(e.target.value)} />
-          </label>
-          <br />
-          {/* Input field for image upload */}
-          <label>
-            Upload Image:
-            <input type="file" onChange={handleFileChange} />
-          </label>
-          <br />
-          <button type="submit">Add Artwork</button>
-        </form>
-      </div>
-      
-      
     </div>
   );
 }
